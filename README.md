@@ -1,4 +1,4 @@
-# # 🌿 Reafily Me
+# # 🌿 Reflectify Me
 
 **Your Personal Mental Wellness Companion**  
 A minimal, distraction-free app to help you reflect, store inspiring quotes, and stay motivated every day.
@@ -51,15 +51,15 @@ Example Flow:
 
 ## 📸 Preview
 
-> *[Add screenshots or gifs of the app UI here]*
+> 
 
 ---
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React / Next.js / Tailwind CSS
-- **Backend**: Node.js / Express / MongoDB
-- **Authentication**: JWT / OAuth (planned)
+- **Frontend**: React  / Tailwind CSS/ shadcn UI
+- **Backend**: Node.js / Express / MongoDB /typescript
+- **Authentication**: JWT 
 - **Other**: Zod / Recoil / Axios
 
 ---
@@ -68,10 +68,10 @@ Example Flow:
 
 ```bash
 # Clone the repository
-git clone https://github.com/your-username/reafily-me.git
+git clone https://github.com/your-username/reflectify-me.git
 
 # Go into the project directory
-cd reafily-me
+cd reflectify-me
 
 # Install dependencies
 npm install
