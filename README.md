@@ -1,0 +1,80 @@
+# # 🌿 Reafily Me
+
+**Your Personal Mental Wellness Companion**  
+A minimal, distraction-free app to help you reflect, store inspiring quotes, and stay motivated every day.
+
+---
+
+## 🧠 Problem Statement
+
+In today’s fast-paced, high-pressure world, students and young professionals often struggle with mental clarity, motivation, and self-reflection.  
+**Reafily Me** provides a calm digital space for journaling thoughts, saving motivational quotes, and cultivating daily mindfulness — without distractions.
+
+---
+
+## 🚀 Features (MVP - v1)
+
+### ✅ Authentication
+- User sign-up and login system
+
+### 📝 Journaling
+- Write, edit, and delete daily reflections
+- Keep entries private and organized
+
+### 💬 Quotes System
+- Save your own personal quotes (books, movies, experiences)
+- Get a random motivational quote from the system
+- Surprise dopamine hit to start your day right
+
+---
+
+## 💡 Real-World Use Cases
+
+- **Students** journaling stress or tracking study patterns
+- **Developers** logging daily learning journeys
+- **Anyone** trying to improve mental wellness or consistency in habits
+
+Example Flow:
+> Wake up → Log in → Get a surprise quote → Reflect in a short journal entry → Log out feeling lighter
+
+---
+
+## 🔮 Future Scope (v2 and beyond)
+
+- Mood Tracker & Tagging (happy/sad/neutral)
+- Daily streaks for consistency
+- AI-generated affirmations
+- Mental pattern analytics
+- Dark mode and customizable themes
+
+---
+
+## 📸 Preview
+
+> *[Add screenshots or gifs of the app UI here]*
+
+---
+
+## 🛠️ Tech Stack
+
+- **Frontend**: React / Next.js / Tailwind CSS
+- **Backend**: Node.js / Express / MongoDB
+- **Authentication**: JWT / OAuth (planned)
+- **Other**: Zod / Recoil / Axios
+
+---
+
+## 📁 Project Setup
+
+```bash
+# Clone the repository
+git clone https://github.com/your-username/reafily-me.git
+
+# Go into the project directory
+cd reafily-me
+
+# Install dependencies
+npm install
+
+# Run development server
+npm run dev
