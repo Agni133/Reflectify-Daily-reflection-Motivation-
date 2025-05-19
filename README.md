@@ -12,7 +12,7 @@ In today’s fast-paced, high-pressure world, students and young professionals o
 
 ---
 
-## 🚀 Features (MVP - v1)
+## 🚀 Features 
 
 ### ✅ Authentication
 - User sign-up and login system
@@ -39,7 +39,7 @@ Example Flow:
 
 ---
 
-## 🔮 Future Scope (v2 and beyond)
+## 🔮 Future Scope 
 
 - Mood Tracker & Tagging (happy/sad/neutral)
 - Daily streaks for consistency
