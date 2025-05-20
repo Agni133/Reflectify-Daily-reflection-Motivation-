@@ -57,9 +57,9 @@ Example Flow:
 
 ## 🛠️ Tech Stack
 
-- **Frontend**: React  / Tailwind CSS/ shadcn UI
-- **Backend**: Node.js / Express / Prisma /typescript
-- **Authentication**: JWT 
+- **Frontend**: React  / Tailwind CSS/ shadcn UI 
+- **Backend**:  Express / Prisma /typescript
+- **Authentication**: JWT
 - **Other**: Zod / Recoil 
 
 ---
