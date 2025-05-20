@@ -24,7 +24,7 @@ In today’s fast-paced, high-pressure world, students and young professionals o
 ### 💬 Quotes System
 - Save your own personal quotes (books, movies, experiences)
 - Get a random motivational quote from the system
-- Surprise dopamine hit to start your day right
+- Surprise dopamine hit to start your day 
 
 ---
 
