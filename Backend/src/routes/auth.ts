@@ -1,19 +1,10 @@
 import express from "express";
-import * as authController from "../controller/authController";
-<<<<<<< Updated upstream
+import * as authController from "../controller/authController"
 
-=======
-      
->>>>>>> Stashed changes
 const router = express.Router();
-router.post("/signup", authController.signup);
 
-router.post("/signin", authController.login);
-<<<<<<< Updated upstream
+router.post('/signup',authController.signup);
+router.post('/signin',authController.login);
 
 
-export default router;
-=======
- 
-export default router;
->>>>>>> Stashed changes
+export default router ;
