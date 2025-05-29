@@ -10,7 +10,5 @@ router.post("/signin", authController.login);
 
 
 export default router;
-=======
- 
-export default router;
+
 // >>>>>>> Stashed changes
