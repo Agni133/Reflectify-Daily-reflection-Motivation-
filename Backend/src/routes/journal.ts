@@ -9,6 +9,5 @@ const router = Router();
  router.post('/create',authenticateToken, createJournal);
  router.get('/',authenticateToken,getuserJournal);
  router.delete('/:id',authenticateToken,deleteJournal)
-   
-
+     
 export default router;
