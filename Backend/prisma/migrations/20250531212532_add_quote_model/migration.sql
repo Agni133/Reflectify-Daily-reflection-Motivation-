@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE "Quotes" ADD COLUMN     "anime" TEXT,
+ADD COLUMN     "character" TEXT,
+ADD COLUMN     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+ADD COLUMN     "mood" TEXT;
