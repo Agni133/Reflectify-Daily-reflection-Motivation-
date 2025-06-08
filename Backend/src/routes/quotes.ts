@@ -6,3 +6,5 @@ const router  = express.Router();
 
 router.get('/',getAnimeQuotes);
 router.get('/saved',authenticateToken,getsavedQuotes);
+
+export default router;
