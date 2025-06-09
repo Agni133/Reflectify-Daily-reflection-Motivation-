@@ -3,7 +3,7 @@ import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
 const JWT_SECRET = process.env.JWT_SECRET!; 
-  
+// authorization should start with bearer auth 
 export const authenticateToken = (req: Request,res: Response,next: NextFunction): void => {
   const authHeader = req.headers['authorization'];
   if(!authHeader || !authHeader.startsWith("Bearer")){
