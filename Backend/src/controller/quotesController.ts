@@ -1,68 +1,69 @@
- import axios from "axios";
-import { Request,Response } from "express";
- import { Prisma, PrismaClient } from "@prisma/client";
+import axios from "axios";
+import { Request, Response } from "express";
+import { PrismaClient } from "@prisma/client";
 
- const prisma = new PrismaClient();
-  // fallback quotes in case of fetching failure 
- const moodQuotes = {
-   happy:[
+const prisma = new PrismaClient();
+
+// Fallback quotes in case the API fails
+const moodQuotes = {
+  happy: [
     {
-   anime:  " LAZZRUS",
-   character : "Axel",
-   quotes : "In order to fool ur enemy fool ur friends first"
+      anime: "LAZZRUS",
+      character: "Axel",
+      quote: "In order to fool your enemy, fool your friends first."
     }
-   ],
-   sad :[
+  ],
+  sad: [
     {
-    anime :"Solo leveling" ,
-    character: "Jinwoo",
-    quotes :"“I certainly got much more stronger than before. But for some reason, I feel like something within me get lost everytime I get stronger"
-    },
-   ],
-   anixous :[
-    {
-    anime : "Attack on titan",
-    character:"EREN YEGER ",
-    quotes:" People who can’t throw something important away, can never hope to change anything." 
-    },
-   ],
- }
- export const getAnimeQuotes = async(req:Request,res:Response)=>{
-   type mood = keyof typeof moodQuotes;
-   
-  const mood = req.query.mood as mood;
-
-    if (mood && moodQuotes[mood]){
-   const quotelist = moodQuotes[mood];
-     const randomQuotes = quotelist[Math.floor(Math.random()* quotelist.length)]
-      res.status(200).json({randomQuotes});
-      return ;
-
+      anime: "Solo Leveling",
+      character: "Jinwoo",
+      quote: "I certainly got much stronger than before. But for some reason, I feel like something within me gets lost every time I get stronger."
     }
-   
-     try{
-     const response = await axios.get("https://animechan.xyz/api/random");
-     const {anime,character,quotes} = response.data;
-      res.status(200).json({anime,character,quotes});
-      return;
-     }catch(err){
-      console.error("Anime error fetching data",err);
-      //fallback quotes
-      const fallback = moodQuotes.happy[0];
-      res.status(200).json(fallback);
-     }
- }
+  ],
+  anxious: [
+    {
+      anime: "Attack on Titan",
+      character: "Eren Yeager",
+      quote: "People who can’t throw something important away can never hope to change anything."
+    }
+  ]
+};
 
- export  const getsavedQuotes = async(req:Request,res:Response)=>{
- const userId = (req as any).userId;
-  const quotes = await prisma.quotes.findMany({
-   where:{
-     userId
+export const getAnimeQuotes = async (req: Request, res: Response) => {
+  const mood = req.query.mood as keyof typeof moodQuotes; // e.g., "happy", "sad", "anxious"
 
-   },
-   orderBy :{
-    createdAt:"desc"
-   }
-  });
-  res.status(200).json(quotes);
- }
+  try {
+    // 1. First, try fetching a random quote from the external API
+    const response = await axios.get("https://animechan.xyz/api/random");
+    const { anime, character, quote } = response.data;
+
+    res.status(200).json({ anime, character, quote });
+  } catch (err) {
+    console.error("Failed to fetch from API, using fallback quotes:", err);
+
+    // 2. If API fails, check if a valid mood was provided (e.g., ?mood=sad)
+    if (mood && moodQuotes[mood]) {
+      const quotesList = moodQuotes[mood];
+      const randomQuote = quotesList[Math.floor(Math.random() * quotesList.length)];
+      res.status(200).json(randomQuote);
+    } else {
+      // 3. If no valid mood, default to the first happy quote
+      res.status(200).json(moodQuotes.happy[0]);
+    }
+  }
+};
+
+export const getSavedQuotes = async (req: Request, res: Response) => {
+  const userId = (req as any).userId; // Assuming userId is set via middleware (e.g., JWT)
+
+  try {
+    const quotes = await prisma.quotes.findMany({
+      where: { userId },
+      orderBy: { createdAt: "desc" }
+    });
+    res.status(200).json(quotes);
+  } catch (err) {
+    console.error("Failed to fetch saved quotes:", err);
+    res.status(500).json({ error: "Database error" });
+  }
+};
