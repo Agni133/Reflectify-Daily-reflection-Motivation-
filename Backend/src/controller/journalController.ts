@@ -10,7 +10,7 @@ export const createJournal = async (req: Request, res: Response):Promise<void> =
     const { content } = req.body;
 
     if (!content) {
-     res.status(400).json({ error: 'Journal content is required' });
+     res.status(400).json({ error: "Journal content is required" });
     }
     
     if (typeof userId !== 'number') {
