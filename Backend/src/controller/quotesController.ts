@@ -1,6 +1,7 @@
 import axios from "axios";
 import { Request, Response } from "express";
 import { PrismaClient } from "@prisma/client";
+import { error } from "console";
 
 const prisma = new PrismaClient();
 
@@ -37,8 +38,12 @@ export const getAnimeQuotes = async (req: Request, res: Response) => {
     const response = await axios.get("https://yurippe.vercel.app/api/quotes?character=lelouch");
 
     const { anime, character, quote } = response.data;
-
+      
+    if(anime && character && quote){
     res.status(200).json({ anime, character, quote });
+    }else {
+     throw new Error("Malfunction API");
+    }
   } catch (err) {
     console.error("Failed to fetch from API, using fallback quotes:", err);
 
@@ -48,7 +53,7 @@ export const getAnimeQuotes = async (req: Request, res: Response) => {
       const randomQuote = quotesList[Math.floor(Math.random() * quotesList.length)];
       res.status(200).json(randomQuote);
     } else {
-      // 3. If no valid mood, default to the first happy quote
+      //  If no valid mood, default to the first happy quote
       res.status(200).json(moodQuotes.happy[0]);
     }
   }
