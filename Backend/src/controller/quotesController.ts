@@ -33,15 +33,16 @@ export const getAnimeQuotes = async (req: Request, res: Response) => {
   const mood = req.query.mood as keyof typeof moodQuotes; // e.g., "happy", "sad", "anxious"
 
   try {
-    // 1. First, try fetching a random quote from the external API
-    const response = await axios.get("https://animechan.xyz/api/random");
+    // First, try fetching a random quote from the external API
+    const response = await axios.get("https://yurippe.vercel.app/api/quotes?character=lelouch");
+
     const { anime, character, quote } = response.data;
 
     res.status(200).json({ anime, character, quote });
   } catch (err) {
     console.error("Failed to fetch from API, using fallback quotes:", err);
 
-    // 2. If API fails, check if a valid mood was provided (e.g., ?mood=sad)
+    //  If API fails, check if a valid mood was provided (e.g., ?mood=sad)
     if (mood && moodQuotes[mood]) {
       const quotesList = moodQuotes[mood];
       const randomQuote = quotesList[Math.floor(Math.random() * quotesList.length)];
@@ -54,7 +55,7 @@ export const getAnimeQuotes = async (req: Request, res: Response) => {
 };
 
 export const getSavedQuotes = async (req: Request, res: Response) => {
-  const userId = (req as any).userId; // Assuming userId is set via middleware (e.g., JWT)
+  const userId = (req as any).userId; 
 
   try {
     const quotes = await prisma.quotes.findMany({
