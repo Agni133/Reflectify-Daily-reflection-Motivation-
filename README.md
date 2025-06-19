@@ -59,7 +59,7 @@ Example Flow:
 - **Frontend**: React  / Tailwind CSS/ shadcn UI 
 - **Backend**:  Express / Prisma(Postgresql) /typescript
 - **Authentication**: JWT
-- **Other**: Zod / Recoil 
+- **Other**: Zod 
 
 ---
 
