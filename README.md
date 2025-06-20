@@ -22,6 +22,7 @@ In today’s fast-paced, high-pressure world, students and young professionals o
 
 ### 💬 Quotes System
 - Save your own personal quotes (books, movies, experiences)
+- Mood Tracker  (happy/sad/neutral)
 - Get a random motivational quote from the system
 - Surprise dopamine hit to start your day 
 
@@ -40,7 +41,6 @@ Example Flow:
 
 ## 🔮 Future Scope 
 
-- Mood Tracker & Tagging (happy/sad/neutral)
 - Daily streaks for consistency
 - AI-generated affirmations
 - Mental pattern analytics
@@ -59,7 +59,7 @@ Example Flow:
 - **Frontend**: React  / Tailwind CSS/ shadcn UI 
 - **Backend**:  Express / Prisma(Postgresql) /typescript
 - **Authentication**: JWT
-- **Other**: Zod / Recoil 
+- **Other**: Zod 
 
 ---
 
