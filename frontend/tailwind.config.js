@@ -5,6 +5,7 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -47,6 +48,8 @@ export default {
       keyframes: {},
       animation: {},
     },
-  },
+    extend: {},
+
   plugins: [],
+}
 }
