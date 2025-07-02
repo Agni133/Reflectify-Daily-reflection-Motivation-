@@ -5,7 +5,6 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-
     extend: {
       colors: {
         border: "hsl(var(--border))",
@@ -45,11 +44,8 @@ export default {
       borderRadius: {
         lg: "var(--radius)",
       },
-      keyframes: {},
-      animation: {},
     },
-    extend: {},
-
+  },
   plugins: [],
 }
-}
+
