@@ -1,4 +1,4 @@
-# # 🌿 Reflectify Me 
+# # 🌿 Reflectify Me  
   
 **Your Personal Mental Wellness Companion**  
 A minimal, distraction-free app to help you reflect, store inspiring quotes, and stay motivated every day.
