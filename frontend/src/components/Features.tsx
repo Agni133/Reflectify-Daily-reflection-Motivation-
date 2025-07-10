@@ -10,7 +10,7 @@ export function Features() {
              transition={{duration:0.9}}
              className="max-w-5xl mx-auto text-center mb-12"
       >  
-     <h2 className="text-3xl font-semibold">Why Reflectify Me?</h2>
+     <h2 className="text-3xl font-semibold">Why Reflectify Me?</h2> <br />
       
       
       <div className="grid gap-8 md:grid-cols-3 max-w-5xl mx-auto">
