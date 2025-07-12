@@ -3,9 +3,9 @@
 **Your Personal Mental Wellness Companion**  
 A minimal, distraction-free app to help you reflect, store inspiring quotes, and stay motivated every day.
 ---  
-     
+        
 ## 🧠 Problem Statement
-
+  
 In today’s fast-paced, high-pressure world, students and young professionals often struggle with mental clarity, motivation, and self-reflection.  
 **Reflectify Me** provides a calm digital space for journaling thoughts, saving motivational quotes, and cultivating daily mindfulness — without distractions.
 
@@ -43,12 +43,14 @@ Example Flow:
 
 - Daily streaks for consistency
 - AI-generated affirmations
+- OAuth Integration (Third party Signin)
 - Mental pattern analytics
 - Dark mode and customizable themes
 
 ---
 
 ## 📸 Preview
+   <img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/28ef9e0a-9b30-4948-8830-27481eadb6e2" />
 
 > 
 
