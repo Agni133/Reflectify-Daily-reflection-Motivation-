@@ -43,6 +43,7 @@ Example Flow:
 
 - Daily streaks for consistency
 - AI-generated affirmations
+- OAuth Integration (Third party Signin)
 - Mental pattern analytics
 - Dark mode and customizable themes
 
