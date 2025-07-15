@@ -34,7 +34,7 @@ export default function Hero(){
           transition={{duration:1,delay:0.6}}
         >
         <Link to = "/register" >
-        <Button className="bg-yellow-500 hover:bg-gray-500 text-black px-8 py-4 text-lg rounded-full shadow-lg transition" >
+        <Button className="bg-black hover:bg-gray-500 text-white px-8 py-4 text-lg rounded-full shadow-lg transition" >
            🌿 Start reflecting
         </Button>
         </Link>          
