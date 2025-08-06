@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import axios from "@/lib/axios";
 import {motion} from "framer-motion"
 
-
      interface Journals{
       id: number;
       content:string;
@@ -25,7 +24,6 @@ export default function Dashboard (){
  const [loading,setLoading]=useState(false);       // laoder when submited the journal 
  const [newContent,setnewContent]=useState(""); //  tracking the new content adding to the jorunal 
    
-// doing side effects 
   useEffect(()=>{
    fetchJournal();
    fetchQuote();
