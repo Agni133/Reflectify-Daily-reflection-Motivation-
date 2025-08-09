@@ -3,18 +3,18 @@ import { useState,useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import axios from "@/lib/axios";
 import {motion} from "framer-motion"
+import Profile from "./Profile";
 
-     interface Journals{
-      id: number;
-      content:string;
-      createdAt: string;
-
-     }
+ interface Journals{
+  id: number;
+ content:string;
+ createdAt: string;
+  }
     //    journal interface act as object and quotes interface too 
-     interface Quotes{
-      anime : string;
-      character:string;
-      quote:string;
+ interface Quotes{
+ anime : string;
+ character:string;
+ quote:string;
      }
    
 
@@ -32,15 +32,22 @@ export default function Dashboard (){
   const fetchJournal = async()=>{
      const res =await axios.get("api/journal");
     setJournal(res.data.journal);
+//  if user wants to write the existing journal 
+     if(res.data.journal.length >0){
+   const latest = res.data.journal[res.data.length-1];
+      setnewContent(latest.content);
+     }
   }
+  
+
  const fetchQuote = async(mood?:string)=>{ 
 const res = await axios.get(`/api/quotes${mood ? `?mood=${mood}` : ''}`);
     setQuotes(res.data);
+ } 
 
- }
 
  const handleAddJournal =async()=>{
-    if(!newContent.trim())   // checks the whitespace of the content of the journal according to that do  and exist early 
+    if(!newContent.trim())   
         return;      
     setLoading(true);  // make the spinner disable 
     
@@ -51,6 +58,9 @@ const res = await axios.get(`/api/quotes${mood ? `?mood=${mood}` : ''}`);
      setLoading(false);
      fetchJournal();
  }
+ 
+   
+
 
  const handleDelete = async(id:number)=>{
  await axios.delete(`/api/journal${id}`);
@@ -70,12 +80,12 @@ const res = await axios.get(`/api/quotes${mood ? `?mood=${mood}` : ''}`);
     <div className="flex items-center justify-between">
  
     {/* Title */}
-    <div className="text-2xl font-extrabold ">Reflectify Me</div>
+    <div className="text-2xl font-extrabold italic text-gray-300">Reflectify Me</div>
 
     {/* Nav links */}
     <nav className="space-x-8 gap-7 text-gray-300 ">
-      <Link to="/" className="hover:text-blue-500 font-bold">Home</Link>
-      <Link to="/profile" className="hover:text-blue-500 font-bold">Profile</Link>
+      <Link to="/" className="hover:text-blue-500 font-bold italic">Home</Link>
+      <Link to="/profile" className="hover:text-blue-500 font-bold italic">Profile</Link>
     </nav>
   </div>
 </header>
@@ -84,7 +94,7 @@ const res = await axios.get(`/api/quotes${mood ? `?mood=${mood}` : ''}`);
     <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-700 via-purple-900 to-slate-900 opacity-40 blur-2xl animate-pulse" />
      {/* main content */}
      <main className="w-full max-w-4xl mx-auto px-6 py-12 z-10 relative">
-      <h1 className="text-4xl font-extrabold mb-8 text-center">Start your Reflection💭</h1>
+      <h1 className="text-4xl font-extrabold mb-8 text-center italic">Start your Reflection💭</h1>
 
                {/* Quotes section */}
                <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl mb-10">
@@ -102,13 +112,19 @@ const res = await axios.get(`/api/quotes${mood ? `?mood=${mood}` : ''}`);
                   </Button>
                    <Button className="text-gray-400 hover:bg-slate-500"onClick={()=>fetchQuote("Happy")}>
                     Happy Quotes
-                   </Button>
+                   </Button> 
                 </div>
                </div>
+                   {newContent &&(
+                     <p className="text-sm text-gray-400 italic">
+                      Continuing with the previous journal 
+                     </p>
+ 
+                   )}
                {/* journal content  */}
                <div className="bg-white/10 backdrop-blur-sm p-6 rounded-xl space-x-5">
-                 <textarea  value={newContent} onChange={(e)=>setnewContent(e.target.value)} placeholder="Write your thoughts....." className="w-full resize-none  h-60 p-3 rounded-md mb-4 text-black border border-slate-300 "/>
-                  <Button className="text-center text-gray-400 rounded-md px-6 py-2 font-semibold hover:bg-slate-300 " onClick={handleAddJournal} disabled={loading}>
+                 <textarea  value={newContent} onChange={(e)=>setnewContent(e.target.value)} placeholder="Write your thoughts....." className="w-full resize-none  h-60 p-3 rounded-md mb-4 text-black border border-slate-600 bg-slate-300 "/>
+                  <Button className="text-center text-gray-400 rounded-md px-6 py-2 font-semibold italic hover:bg-slate-300 " onClick={handleAddJournal} disabled={loading}>
                       {loading? "Saving...":"Add Journal"}
                   </Button>
                </div>
@@ -118,7 +134,7 @@ const res = await axios.get(`/api/quotes${mood ? `?mood=${mood}` : ''}`);
       <h2 className="text-2xl font-semibold mb-4 text-center">📝 Your Past Reflections</h2>
 
         {journal.length === 0 ? (
-    <p className="text-gray-400 text-center">No entries yet. Write your thoughts above!</p>
+    <p className="text-gray-400 text-center italic">No entries yet. Write your thoughts above!</p>
   ) : (
     journal.map((entry) => (
       <div key={entry.id} className="bg-white/10 p-4 rounded-lg">
