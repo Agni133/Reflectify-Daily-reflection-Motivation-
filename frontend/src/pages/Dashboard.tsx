@@ -3,7 +3,8 @@ import { useState,useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import axios from "@/lib/axios";
 import {motion} from "framer-motion"
-import Profile from "./Profile";
+import {Profile} from "@/pages/Profile";
+
 
  interface Journals{
   id: number;
@@ -59,9 +60,6 @@ const res = await axios.get(`/api/quotes${mood ? `?mood=${mood}` : ''}`);
      fetchJournal();
  }
  
-   
-
-
  const handleDelete = async(id:number)=>{
  await axios.delete(`/api/journal${id}`);
   fetchJournal(); // fetch the journal after delete the journal of paritcular id 
@@ -75,7 +73,6 @@ const res = await axios.get(`/api/quotes${mood ? `?mood=${mood}` : ''}`);
     className="relative min-h-screen w-full bg-gradient-to-br from-blue-900 via-purple-900 to-slate-900 text-white overflow-x-hidden"
   >
 
-    
    <header className="w-full px-6 py-4 bg-gradient-to-br from-blue-900 via-purple-900/20 to-slate-900 text-white z-10 =shadow-md">
     <div className="flex items-center justify-between">
  
