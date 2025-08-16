@@ -3,7 +3,7 @@ import { useState,useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import axios from "@/lib/axios";
 import {motion} from "framer-motion"
-import {Profile} from "@/pages/Profile";
+ 
 
 
  interface Journals{
