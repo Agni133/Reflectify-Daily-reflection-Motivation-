@@ -4,7 +4,7 @@ import journalRoutes from './routes/journal';
 import quotesRoutes from  './routes/quotes';
 import dotenv from 'dotenv'
 import cors from "cors"
-
+import profileRoutes from "./routes/profile"
 
 dotenv.config();
 const app = express();
@@ -16,6 +16,8 @@ app.use('/api/auth',authRoutes);
 app.use('/api/journal',journalRoutes);
 
 app.use('/api/quotes',quotesRoutes);
+
+app.use('api/profile',profileRoutes);
   
 app.get("/",(_req,res)=>{
     res.send("Running reflectify me");
