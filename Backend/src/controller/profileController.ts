@@ -7,7 +7,8 @@ export const updateProfilePic = async (req : Request, res: Response )=>{
  try{
    
     if(!req.file){
-       return res.status(401).json({message:"No file Uploaded"})
+       res.status(401).json({message:"No file Uploaded"})
+       return;  
     }
      
     const  updateUser = await prisma.user.update({
@@ -18,6 +19,6 @@ export const updateProfilePic = async (req : Request, res: Response )=>{
       res.json({message : "Profile pic updated" , user:updateProfilePic})
  }catch(err){
    console.log(err);
-   return res.status(500).json({message: "Server Error ",error :err })
+    res.status(500).json({message: "Server Error ",error :err })
  };
 }
