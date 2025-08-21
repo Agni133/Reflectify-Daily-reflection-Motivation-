@@ -70,10 +70,10 @@ const res = await axios.get(`/api/quotes${mood ? `?mood=${mood}` : ''}`);
     initial={{ opacity: 0, y: 20 }}
     animate={{ opacity: 1, y: 0 }}
     transition={{ duration: 0.8 }}
-    className="relative min-h-screen w-full bg-gradient-to-br from-blue-900 via-purple-900 to-slate-900 text-white overflow-x-hidden"
+    className="relative min-h-screen w-full bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white overflow-x-hidden"
   >
 
-   <header className="w-full px-6 py-4 bg-gradient-to-br from-blue-900 via-purple-900/20 to-slate-900 text-white z-10 =shadow-md">
+   <header className="w-full px-6 py-4 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-800 text-white z-10 =shadow-md">
     <div className="flex items-center justify-between">
  
     {/* Title */}
@@ -88,7 +88,7 @@ const res = await axios.get(`/api/quotes${mood ? `?mood=${mood}` : ''}`);
 </header>
 
     {/* Background  */}
-    <div className="absolute inset-0 -z-10 bg-gradient-to-br from-indigo-700 via-purple-900 to-slate-900 opacity-40 blur-2xl animate-pulse" />
+    <div className="absolute inset-0 -z-10 bg-gradient-to-br  from-slate-950 via-slate-900  bg-slate-800 opacity-40 blur-2xl animate-pulse" />
      {/* main content */}
      <main className="w-full max-w-4xl mx-auto px-6 py-12 z-10 relative">
       <h1 className="text-4xl font-extrabold mb-8 text-center italic">Start your Reflection💭</h1>
