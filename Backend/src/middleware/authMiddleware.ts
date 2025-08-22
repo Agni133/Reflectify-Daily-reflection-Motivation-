@@ -1,4 +1,3 @@
-import { error } from 'console';
 import { Request, Response, NextFunction } from 'express';
 import jwt from 'jsonwebtoken';
 
@@ -7,7 +6,8 @@ const JWT_SECRET = process.env.JWT_SECRET!;
 export const authenticateToken = (req: Request,res: Response,next: NextFunction): void => {
   const authHeader = req.headers['authorization'];
   if(!authHeader || !authHeader.startsWith("Bearer")){
-    res.status(401).json({ error:"Unauthorized"})
+    res.status(401).json({ error:"Unauthorized"}) ;
+    return;
   }
   const token = authHeader?.split(' ')[1];
 
