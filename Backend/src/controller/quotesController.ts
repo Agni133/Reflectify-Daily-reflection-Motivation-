@@ -47,7 +47,7 @@ export const getAnimeQuotes = async (req: Request, res: Response) => {
     const animeQuote = response.data[0];
 
     res.status(200).json({
-      anime: animeQuote.anime,
+      anime: animeQuote.anime, 
       character: animeQuote.character,
       quote: animeQuote.quote
     });
