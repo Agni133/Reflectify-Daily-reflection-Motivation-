@@ -4,7 +4,7 @@
 A minimal, distraction-free app to help you reflect, store inspiring quotes, and stay motivated every day.
 ---     
           
-## 🧠 Problem Statement  
+## 🧠 Problem Statement   
   
 In today’s fast-paced, high-pressure world, students and young professionals often struggle with mental clarity, motivation, and self-reflection.  
 **Reflectify Me** provides a calm digital space for journaling thoughts, saving motivational quotes, and cultivating daily mindfulness — without distractions.
