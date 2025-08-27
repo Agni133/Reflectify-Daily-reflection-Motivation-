@@ -51,11 +51,7 @@ Example Flow:
 
 ## 📸 Preview
 
-
-
-
-
-
+<img width="1920" height="1080" alt="image" src="https://github.com/user-attachments/assets/e7c161b2-f5b1-4078-a8a5-fe8da67444c8" />
 > 
 
 ---
