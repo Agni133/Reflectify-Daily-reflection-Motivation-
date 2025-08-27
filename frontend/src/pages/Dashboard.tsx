@@ -84,7 +84,7 @@ export default function Dashboard() {
       {/* Header */}
       <header className="w-full px-8 py-4 border-b border-slate-800 bg-slate-900/70 backdrop-blur-md">
         <div className="flex items-center justify-between max-w-6xl mx-auto">
-          <div className="text-xl font-bold text-white">Reflectify</div>
+          <div className="text-3xl font-bold text-white text-center italic">Reflectify</div>
           <nav className="space-x-8 text-slate-300 font-medium">
             <Link to="/" className="hover:text-blue-400 ">
               Home
@@ -139,7 +139,7 @@ export default function Dashboard() {
         {/* Journal Input */}
         <Card className="bg-slate-900/80 border border-slate-800 shadow-xl">
           <CardHeader>
-            <CardTitle className="text-lg text-slate-200">Write Your Thoughts</CardTitle>
+            <CardTitle className="text-lg text-slate-200 italic">Write Your Thoughts</CardTitle>
           </CardHeader>
           <CardContent>
             {newContent && (
