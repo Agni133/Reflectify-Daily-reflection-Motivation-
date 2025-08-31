@@ -13,34 +13,43 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-
 model User {
- id   Int   @id @default (autoincrement())
- name String 
- email String @unique
- password String
- profilePic String?
- journals  Journal[]
- quotes  Quotes[]
+  id          Int            @id @default(autoincrement())
+  name        String
+  email       String         @unique
+  password    String
+  profilePic  String?
+  journals    Journal[]
+  quotes      Quotes[]
+  savedQuotes Saved_quotes[]
 }
 
-model Journal{
- id   Int @id @default(autoincrement())
-userId Int 
-content String
-createdAt DateTime @default(now())
-
- user  User @relation(fields: [userId],references: [id],onDelete: Cascade)
+model Journal {
+  id        Int      @id @default(autoincrement())
+  userId    Int
+  content   String
+  mood      String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
-model Quotes{
- id Int @id @default(autoincrement())
- text String
- anime String?
- character String? 
- mood String? 
- userId  Int
- user User @relation(fields: [userId],references: [id],onDelete: Cascade)  
- createdAt DateTime @default(now())
+model Quotes {
+  id        Int      @id @default(autoincrement())
+  text      String
+  anime     String?
+  character String?
+  mood      String?
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
 }
-  
+
+model Saved_quotes {
+  id        Int      @id @default(autoincrement())
+  quote     String?
+  character String?
+  anime     String?
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  savedAt   DateTime @default(now())
+}
