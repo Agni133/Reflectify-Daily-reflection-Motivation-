@@ -21,13 +21,13 @@ export function CTA() {
       </div>
 
       <div className="relative z-10 max-w-4xl mx-auto px-6">
-        {/* Urgency Badge */}
+        
         <motion.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="inline-flex -mt-4 items-center gap-2 bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 rounded-full px-4 py-2 mb-6 text-sm"
+          className="inline-flex -mt-9s items-center gap-2 bg-gradient-to-r from-green-500/20 to-blue-500/20 border border-green-500/30 rounded-full px-4 py-2 mb-6 text-sm"
         >
           <Sparkles className="w-4 h-4 mt-0 text-green-400 animate-pulse" />
           <span className="text-green-300">Start your mindful journey today</span>
@@ -38,7 +38,7 @@ export function CTA() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
-          className="text-4xl md:text-6xl font-bold mb-6 leading-tight"
+          className="text-4xl md:text-6xl font-bold mb-6 mt-7 leading-tight"
         >
           <span className="bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
             Ready to feel lighter & more focused?
