@@ -1,14 +1,12 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, CheckCircle, Sparkles, Users } from "lucide-react";
+import { ArrowRight, CheckCircle, Sparkles} from "lucide-react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 export function CTA() {
   const benefits = [
-    "7-day free trial",
     "No credit card required",
-    "Cancel anytime",
-    "24/7 support"
+    "Free of Cost",
   ];
 
   return (
