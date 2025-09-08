@@ -2,8 +2,8 @@
      
 **Your Personal Mental Wellness Companion**  
 A minimal, distraction-free app to help you reflect, store inspiring quotes, and stay motivated every day.
----     
-           
+---        
+            
 ## 🧠 Problem Statement   
   
 In today’s fast-paced, high-pressure world, students and young professionals often struggle with mental clarity, motivation, and self-reflection.  
