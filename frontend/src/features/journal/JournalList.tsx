@@ -11,7 +11,7 @@ interface Journal{
 }
 
  interface JournalListProps {
-  journals:Journal[]; // return the list of journals i have saved in the past
+  journals:Journal[]; // return the list of journals
   ondelete:(id:number)=> void   // each journal entry have particular id and it return void type 
  } 
 
@@ -22,6 +22,8 @@ interface Journal{
  {emoji: "😤", label: "Frustrated", value: "frustrated"},
  {emoji: "😴", label: "Tired", value: "tired"},
  {emoji: "🤔", label: "Thoughtful", value: "thoughtful"},
+ { emoji:"❤️", label: "Loved", value: "loved" },
+ { emoji:"🔥", label: "Burning Desire", value: "burning desire" },
  ]
 
 export default function JournalList({journals , ondelete}:JournalListProps){
