@@ -17,6 +17,8 @@ interface JournalInputProps {
   { emoji: "😤", label: "Frustrated", value: "frustrated" },
   { emoji: "😴", label: "Tired", value: "tired" },
   { emoji: "🤔", label: "Thoughtful", value: "thoughtful" },
+  { emoji: "❤️", label: "Loved", value: "loved" },
+  { emoji: "🔥", label: "Burning Desire", value: "burning desire" },
 ]
 
 export default  function JournalInput({onAddJournal ,initialContent,loading}:JournalInputProps){
