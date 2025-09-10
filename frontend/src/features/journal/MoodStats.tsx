@@ -18,6 +18,8 @@ const moods = [
     { emoji: "😤", label: "Frustrated", value: "frustrated" },
     { emoji: "😴", label: "Tired", value: "tired" },
     { emoji: "🤔", label: "Thoughtful", value: "thoughtful" },
+    { emoji: "❤️", label: "Loved", value: "loved" },
+    { emoji: "🔥", label: "Burning Desire", value: "burning desire" },
   ];
   
 
@@ -50,7 +52,7 @@ export default function MoodStats({journals}:MoodStatProps){
       <CardContent>
         <div className="grid grid-cols-3 gap-4">
   
-        {moodStats.slice(0, 6).map(({ mood, count, emoji }) => (
+        {moodStats.slice(0, 7).map(({ mood, count, emoji }) => (
           // start with mood object search through each mood and assign each box to { mood ,count, emoji}
          <div key={mood} className="rounded-lg text-center p-3 bg-slate-800/60 " >
           <div className="text-2xl mb-1">{emoji}</div>
