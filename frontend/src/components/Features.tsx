@@ -28,7 +28,7 @@ export function Features() {
 
   const benefits = [
     { icon: TrendingUp, title: "Track Progress", desc: "Visual mood trends" },
-    { icon: Shield, title: "Private & Secure", desc: "Your data stays yours" },
+    { icon: Shield, title: "Private & Secure", desc: "Private and secure connection" },
     { icon: Clock, title: "Quick & Easy", desc: "5-min daily check-ins" },
     { icon: Smile, title: "Feel Better", desc: "Build positive habits" },
     { icon: Zap, title: "Stay Motivated", desc: "Streak tracking & goals" },
