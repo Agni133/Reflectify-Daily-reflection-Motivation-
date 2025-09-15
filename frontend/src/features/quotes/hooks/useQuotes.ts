@@ -1,72 +1,71 @@
-import { useEffect, useState } from "react";
-import axios from "@/lib/axios"
+import { useState, useEffect } from "react";
+import axios from "@/lib/axios";
 
-interface Quotes {
-anime : string;
-character:string;
-quote:string;
+interface Quote {
+  anime: string;
+  character: string;
+  quote: string;
 }
 
- interface SavedQuotes extends Quotes{
+interface SavedQuote extends Quote {
   id: number;
-  savedAt:string;
- }
-//   divide into 3 section savedquotes fetchquotes and savedfetchquotes  
-
-export default function useQuotes(){
-const [currentquotes,setCurrentQuotes]= useState<Quotes| null>();
-const [savedquotes,setSavedQuotes]=useState<SavedQuotes[]>([]);
-
- const fetchquotes = async(mood?:string)=>{ 
-   try{
-    const res = await axios.get("/api/mood/quotes",{params:{mood}})
-     const data: Quotes | Quotes[] =res.data ; //  fetch single quotes or array of quotes send from the backend   
-       if(Array.isArray(data) && data.length>0){     //if data is array and it contain at least one element return that first element 
-         setCurrentQuotes(data[0]);
-       }else if(!Array.isArray(data)){  // data here is quotes so if data is not a array may be its string or object set it directly 
-         setCurrentQuotes(data);
-       }else{
-        setCurrentQuotes(null);  // if data is array and its empty length is zero so return null 
-       }
-   }catch(err){
-    console.error("error fetching quotes",err);
-   }   
-
-      
+  savedAt: string;
 }
 
-const fetchSavedquotes = async()=>{
-  try{
-  const res = await axios.get("/api/saved-quotes");
-    setSavedQuotes(res.data.quotes|| [])
-  }catch(err){
-    console.error("Error fetching Saved quotes",err);
-   }
-};
+export const useQuotes = () => {
+  const [currentQuote, setCurrentQuote] = useState<Quote | null>(null);
+  const [savedQuotes, setSavedQuotes] = useState<SavedQuote[]>([]);
 
-const SavedQuotes = async(quote:Quotes)=>{
-    try{
-    await axios.post("api/saved-quotes",{
-      anime :quote.anime,
-      character :quote.character,
-      quote : quote.quote
-     });
-      await fetchSavedquotes();
-    }catch(err){
-   console.error("Error Saving quotes",err)
+  const fetchQuote = async (mood?: string) => {
+    try {
+      const res = await axios.get(`/api/quotes${mood ? `?mood=${mood}` : ""}`);
+      const data: Quote | Quote[] = res.data;
+
+      if (Array.isArray(data) && data.length > 0) {
+        setCurrentQuote(data[0]);
+      } else if (!Array.isArray(data)) {
+        setCurrentQuote(data);
+      } else {
+        setCurrentQuote(null);
+      }
+    } catch (error) {
+      console.error("Error fetching quotes:", error);
+      setCurrentQuote(null);
     }
-}  
-  useEffect(()=>{
-    fetchquotes();
-    fetchSavedquotes();
-  },[]);
+  };
+
+  const fetchSavedQuotes = async () => {
+    try {
+      const res = await axios.get("api/saved-quotes");
+      setSavedQuotes(res.data.quotes || []);
+    } catch (error) {
+      console.error("Error fetching saved quotes:", error);
+    }
+  };
+
+  const saveQuote = async (quote: Quote) => {
+    try {
+      await axios.post("/api/saved-quotes", {
+        anime: quote.anime,
+        character: quote.character,
+        quote: quote.quote
+      });
+      await fetchSavedQuotes();
+    } catch (error) {
+      console.error("Error saving quote:", error);
+    }
+  };
+
+  useEffect(() => {
+    fetchQuote();
+    fetchSavedQuotes();
+  }, []);
 
   return {
-   currentquotes,
-   savedquotes,
-   fetchquotes,
-   SavedQuotes,
-   fetchSavedquotes
-  }
-
-}   
+    currentQuote,
+    savedQuotes,
+    fetchQuote,
+    saveQuote,
+    fetchSavedQuotes
+  };
+};
