@@ -7,10 +7,11 @@ const prisma = new PrismaClient();
 export const createJournal = async (req: Request, res: Response):Promise<void> => {
   try {
     const userId = req.userId;   
-    const { content } = req.body;
+    const { content, mood } = req.body;
 
     if (!content) {
      res.status(400).json({ error: "Journal content is required" });
+     return;
     }
     
     if (typeof userId !== 'number') {
@@ -28,6 +29,7 @@ export const createJournal = async (req: Request, res: Response):Promise<void> =
       data: {
         content,
         userId,
+        mood: typeof mood === 'string' && mood.trim() !== '' ? mood : 'neutral',
       },
     }); 
 
@@ -70,6 +72,7 @@ export const deleteJournal = async(req: Request,res:Response)=>{
       id : journalId
     }
   });
+  
   if(!journal || journal.userId !==userId){
       res.status(404).json({
        error : "Journal not found or unauthorized"
