@@ -50,6 +50,10 @@ export const getuserJournal = async(req:Request, res: Response)=>{
       where: {
          userId
       },
+      select:{
+       mood:true,
+       createdAt:true
+      },     
       orderBy:{
         createdAt : "desc"
       }
