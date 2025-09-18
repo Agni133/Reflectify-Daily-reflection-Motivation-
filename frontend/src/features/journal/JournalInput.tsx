@@ -37,7 +37,7 @@ export default  function JournalInput({onAddJournal ,initialContent,loading}:Jou
   return (
    <Card className="shadow-xl bg-slate-900/80  border border-slate-800"> 
     <CardHeader>
-      <CardTitle className="text-lg italic text-slate-200">Write your Thoughts..💭</CardTitle>
+      <CardTitle className="text-xl italic text-slate-200">Write your Thoughts..💭</CardTitle>
     </CardHeader>
     <CardContent>
      {initialContent && (
@@ -46,11 +46,11 @@ export default  function JournalInput({onAddJournal ,initialContent,loading}:Jou
       </p>
      )}
         <textarea value={newcontent} onChange={(e:React.ChangeEvent<HTMLTextAreaElement>)=>setNewContent(e.target.value)} 
-       placeholder="Write your thoughts..."  className=" w-full h-32 p-3 mb-4 border border-slate-700 rounded-md resize-none focus:ring focus:ring-blue-500 text-white bg-slate-800" /> 
+       placeholder="Write your thoughts..."  className=" w-full h-80 p-3 mb-14 border border-slate-700 rounded-md resize-none focus:ring focus:ring-blue-500 text-white bg-slate-800" /> 
      
       {/* mood selection part */}
     <div className="mb-4">
-      <p className="text-sm text-slate-300 mb-2">How are u feeling?</p>
+      <p className="text-sm text-slate-300 mb-2 italic">How are u feeling?</p>
       <div className="grid grid-cols-6 gap-2">
       {mood.map((mood) => (
               <Button
