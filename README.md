@@ -27,7 +27,7 @@ In today’s fast-paced, high-pressure world, students and young professionals o
 - Surprise dopamine hit to start your day 
 
 ### 💬 Graph System
- - Shows the graph and activity of the user mood based of how many times user have been sad and 
+ - Shows the graph and activity of the user mood based of how many times user have been sad and happy or exicted
  
 ---
 
