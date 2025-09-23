@@ -38,7 +38,7 @@ In today’s fast-paced, high-pressure world, students and young professionals o
 - **Anyone** trying to improve mental wellness or consistency in habits
 \
 Example Flow:
-> Wake up → Log in → Get a surprise quote → Reflect in a short journal entry + Mood emojis for tracking the mood user is feeling  → Log out feeling lighter
+> Wake up → Log in → Get a surprise quote → Reflect in a short journal entry + Mood emojis for tracking the mood user is feeling  → with a graph showing mood based on emoji and count →  Log out feeling lighter
 
 ---
 
