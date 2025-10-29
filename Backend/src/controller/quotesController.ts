@@ -10,6 +10,11 @@ const moodQuotes = {
       anime: "LAZZRUS",
       character: "Axel",
       quote: "In order to fool your enemy, fool your friends first."
+    },
+    {
+      anime: "Dragon Ball Z",
+      character: "Vegeta",
+      quote:"You goona be best or u be nothing"
     }
   ],
   sad: [
@@ -27,6 +32,13 @@ const moodQuotes = {
       quote:
         "People who can’t throw something important away can never hope to change anything."
     }
+  ],
+  Random:[
+   {
+     anime : "Dragon ball z",
+     character : "Goku",
+     quote: "Even a lower class can beat an elite if he puts his mind and body into it"
+   }
   ]
 };
 
@@ -49,7 +61,8 @@ export const getAnimeQuotes = async (req: Request, res: Response) => {
     res.status(200).json({
       anime: animeQuote.anime, 
       character: animeQuote.character,
-      quote: animeQuote.quote
+       text: animeQuote.quote,
+       mood:moodQuotes
     });
   } catch (err) {
     console.error("Failed to fetch from API, using fallback quotes:", err);
@@ -64,7 +77,35 @@ export const getAnimeQuotes = async (req: Request, res: Response) => {
     }
   }
 };
+ 
+  export const saveQuote = async (req:Request ,res:Response)=>{
+    const userId = (req as any).userId;
+     
+       if(!userId){
+        res.status(401).json({ error:"Unauthorized"});
+       }
 
+    const {anime,character,text,mood}= req.body;
+     try{
+       const newQuote = await prisma.quotes.create({
+          data:{
+          anime,
+          character,
+          text,
+          mood,
+          userId
+          }
+       });
+       res.status(201).json(newQuote)
+     }catch(err){
+     console.error("Fetching error while saving quotes",err)
+       res.status(500).json({error: "Database  error while fetching the quotes"})
+
+     }
+
+  }
+
+  // end point to fetch the save quotes 
 export const getSavedQuotes = async (req: Request, res: Response) => {
   const userId = (req as any).userId;
 
