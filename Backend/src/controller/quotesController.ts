@@ -61,7 +61,7 @@ export const getAnimeQuotes = async (req: Request, res: Response) => {
     res.status(200).json({
       anime: animeQuote.anime, 
       character: animeQuote.character,
-       text: animeQuote.quote,
+       quote : animeQuote.quote,
        mood:moodQuotes
     });
   } catch (err) {
@@ -85,13 +85,13 @@ export const getAnimeQuotes = async (req: Request, res: Response) => {
         res.status(401).json({ error:"Unauthorized"});
        }
 
-    const {anime,character,text,mood}= req.body;
+    const {anime,character,quotes,mood}= req.body;
      try{
        const newQuote = await prisma.quotes.create({
           data:{
           anime,
           character,
-          text,
+          text:quotes,
           mood,
           userId
           }
