@@ -36,8 +36,9 @@ export const useQuotes = () => {
 
   const fetchSavedQuotes = async () => {
     try {
-      const res = await axios.get("api/saved-quotes");
-      setSavedQuotes(res.data.quotes || []);
+      const res = await axios.get("/api/quotes/saved-quotes");
+      setSavedQuotes(res.data || []);
+      console.log("fetch quotes",res);
     } catch (error) {
       console.error("Error fetching saved quotes:", error);
     }
@@ -45,7 +46,7 @@ export const useQuotes = () => {
 
   const saveQuote = async (quote: Quote) => {
     try {
-      await axios.post("/api/saved-quotes", {
+      await axios.post("/api/quotes/saved-quotes", {  // ← CHANGED THIS
         anime: quote.anime,
         character: quote.character,
         quote: quote.quote
