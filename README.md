@@ -41,6 +41,10 @@ Example Flow:
 > Wake up → Log in → Get a surprise quote → Reflect in a short journal entry + Mood emojis for tracking the mood user is feeling  → with a graph showing mood based on emoji and count →  Log out feeling lighter
 
 ---
+## Architecture Overview
+  <img width="1920" height="700" alt="Screenshot (1303)" src="https://github.com/user-attachments/assets/9f74eb31-e18b-41c5-8c10-a30fb03be892" />
+
+
 
 ## 🔮 Future Scope 
 
