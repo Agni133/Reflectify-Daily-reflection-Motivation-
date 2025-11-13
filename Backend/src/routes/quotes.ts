@@ -1,10 +1,15 @@
-import express from "express"
-import { getAnimeQuotes,getSavedQuotes } from "../controller/quotesController"
+import express, { Router } from "express";
+
+import { getSavedQuotes, getAnimeQuotes,saveQuote } from "../controller/quotesController";
+
 import { authenticateToken } from "../middleware/authMiddleware";
 
-const router  = express.Router();
+const router = express.Router();
 
 router.get('/',getAnimeQuotes);
-router.get('/saved',authenticateToken,getSavedQuotes);
+router.get('/saved-quotes',authenticateToken,getSavedQuotes);
 
-export default router;
+router.post('/saved-quotes',authenticateToken,saveQuote);
+
+
+export default router ;
