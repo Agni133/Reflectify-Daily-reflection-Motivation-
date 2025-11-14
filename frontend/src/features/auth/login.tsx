@@ -57,12 +57,12 @@ export  default function Login() {
             <div className="flex flex-col space-y-2">
       
                 <label>Email</label>
-              <Input id="email" type="email" placeholder="Enter your email"  onChange={HandlerChange} required/>
+              <Input id="email" name="email" type="email" placeholder="Enter your email"  onChange={HandlerChange} required/>
             </div>
 
             <div className="flex flex-col space-y-2 relative">
              <label >Password</label>
-              <Input id="password"  placeholder="Enter your Password" type={showPassword?"text":"password"} onChange={HandlerChange} required/>
+              <Input id="password"  name="password"  placeholder="Enter your Password" type={showPassword?"text":"password"} onChange={HandlerChange} required/>
              <span onClick={()=>setShowPassword(!showPassword)} className="absolute right-3 top-8 cursor-pointer hover:text-white transition"> 
               {showPassword ? <EyeOff size={22}/>:<Eye size={22}/>}
              </span>
