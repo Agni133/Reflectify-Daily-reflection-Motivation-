@@ -25,7 +25,7 @@ export default function Register() {
     setError("");
 
     try {
-      const res = await axios.post("/api/auth/signin", form);
+      const res = await axios.post("/api/auth/signup", form);
       localStorage.setItem("token", res.data.token);
       navigate("/dashboard");
     } catch (err: any) {
@@ -51,7 +51,7 @@ export default function Register() {
           <form onSubmit={handleSubmit} className="space-y-4">
               <div className="relative space-y-1">
               <label >Username</label>
-            <Input name="name" placeholder="Name" onChange={handleChange} required />
+            <Input name="name" placeholder="name" onChange={handleChange} required />
                </div>
                <div className="relative space-y-1">
               <label>Email</label>
