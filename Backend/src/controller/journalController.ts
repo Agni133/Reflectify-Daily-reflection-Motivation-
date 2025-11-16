@@ -44,7 +44,7 @@ export const createJournal = async (req: Request, res: Response):Promise<void> =
 export const getuserJournal = async(req:Request, res: Response)=>{
    try{
    
-    const userId = (req as any).userid;
+    const userId = (req as any).userId;
      
     const journals =  await prisma.journal.findMany({
       where: {
@@ -67,28 +67,39 @@ export const getuserJournal = async(req:Request, res: Response)=>{
    }
 
 }
+ export  const deleteJournal = async(req:Request ,res:Response)=>{
+     try{
+   const journalId = parseInt(req.params.id,10);
+   const  userId = (req as any).userId;  
+   
+   if(isNaN(journalId)){
+     res.status(400).json({error:"Invlid Journal"})
+     return;
+   }
+   
+     const journal = await prisma.journal.findUnique({
+        where :{
+        id: journalId
+        },
+     });
 
-export const deleteJournal = async(req: Request,res:Response)=>{
-  const journalId = parseInt(req.params.id);
-  const userId = (req as any).userid;
-  const journal = await prisma.journal.findUnique({
-    where :{
-      id : journalId
-    }
-  });
-  
-  if(!journal || journal.userId !==userId){
-      res.status(404).json({
-       error : "Journal not found or unauthorized"
-     })
-  };
+     if(!journal || journal.userId !==userId){
+       
+      res.status(404).json({error:"Journal not found : unauthorized"})
+     }
+        
+     await prisma.journal.delete({
+      where:{
+       id:journalId,
 
-  await prisma.journal.delete({
-    where:{
-      id : journalId
+      }
+
+     });
+    
+   res.status(200).json({ success: true, message: "Journal deleted successfully" });
+    }catch(err){
+      console.error("error deleting journal",err);
+      res.status(500).json({error:"Internal server error"})
     }
-  })
-  res.status(200).json({
-    msg: "Journal got deleted"
- })
+    
 };
