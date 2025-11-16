@@ -13,13 +13,11 @@ app.use(express.json());
 
 app.use('/api/auth',authRoutes);
 
-app.use('/api/journal',journalRoutes);
- 
-app.use('/api/journal/mood',journalRoutes)
+app.use('/api/journals',journalRoutes);
 
 app.use('/api/quotes',quotesRoutes);
 
-app.use('api/profile',profileRoutes);
+app.use('/api/profile',profileRoutes);
   
 app.get("/",(_req,res)=>{
     res.send("Running reflectify me");
