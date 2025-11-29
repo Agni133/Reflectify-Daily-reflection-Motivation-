@@ -21,6 +21,11 @@ model User {
   profilePic  String?
   journals    Journal[]
   quotes      Quotes[]
+  avatarId     String?
+  theme         String  @default("dark")
+  fontStyle     String  @default("inter")
+   createdAt DateTime @default(now())
+   updatedAt   DateTime @default(now())
   savedQuotes Saved_quotes[]
 }
 
