@@ -51,7 +51,9 @@ export const getuserJournal = async(req:Request, res: Response)=>{
          userId
       },
       select:{
+        id:true,
        mood:true,
+       content:true,
        createdAt:true
       },     
       orderBy:{
@@ -70,7 +72,7 @@ export const getuserJournal = async(req:Request, res: Response)=>{
  export  const deleteJournal = async(req:Request ,res:Response)=>{
      try{
    const journalId = parseInt(req.params.id,10);
-   const  userId = (req as any).userId;  
+   const  userId = req.userId;
    
    if(isNaN(journalId)){
      res.status(400).json({error:"Invlid Journal"})
@@ -86,6 +88,7 @@ export const getuserJournal = async(req:Request, res: Response)=>{
      if(!journal || journal.userId !==userId){
        
       res.status(404).json({error:"Journal not found : unauthorized"})
+      return;
      }
         
      await prisma.journal.delete({
