@@ -122,7 +122,7 @@ export const getAvatar = async(req:Request,res:Response)=>{
     { id: "bulma", name: "bulma", imageUrl: "/avatars/bulma.png" },
     { id: "horikita", name: "horikita", imageUrl: "/avatars/horikita.png" },
     { id: "boruto", name: "boruto", imageUrl: "/avatars/boruto.png" },
-    { id: "sarada", name: "sarada", imageUrl: "/avatars/sarada.png" },
+    { id: "sarada", name: "sarada", imageUrl: "/avatars/sarada.png"},
     { id: "ayanakoji", name: "ayanakoji", imageUrl: "/avatars/ayanakoji.png" },
     { id: "goku", name: "goku", imageUrl: "/avatars/goku.png" },
     { id: "vegeta", name: "vegeta", imageUrl: "/avatars/vegeta.png" },
