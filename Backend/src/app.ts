@@ -5,11 +5,16 @@ import quotesRoutes from  './routes/quotes';
 import dotenv from 'dotenv'
 import cors from "cors"
 import profileRoutes from "./routes/profile"
+import { getAvatar } from "./controller/profileController";
+import path, { join } from "path";
+import { dir } from "console";
 
 dotenv.config();
 const app = express();
 app.use(cors());
 app.use(express.json());
+
+app.use(express.static(path.join(__dirname, "../public")));
 
 app.use('/api/auth',authRoutes);
 
