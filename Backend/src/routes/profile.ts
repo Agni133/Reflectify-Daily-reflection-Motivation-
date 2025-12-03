@@ -5,7 +5,7 @@ import { authenticateToken } from "../middleware/authMiddleware";
 
 const router = express.Router();
 
-router.put("/upload", upload.single("profilePic") ,updateProfilePic)
+router.post("/upload", upload.single("profilePic") ,updateProfilePic)
 router.put("/profile/avatar",authenticateToken,updateAvatar);
 router.put("/proile/theme",authenticateToken,updateTheme);
 router.put("/profile/font",authenticateToken,updateFont);
