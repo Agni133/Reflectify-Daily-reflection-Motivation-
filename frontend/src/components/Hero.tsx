@@ -96,7 +96,7 @@ export default function Hero (){
            <div className="bg-gray-800/50 rounded-lg p-6 text-left">
             <div className="mb-4">
               <h4 className="text-sm text-gray-400 mb-2">Quote of the day</h4>
-               <p className="text-gray-300 text-base mb-2 italic">"The way to get started is to quit talking and begin doing."</p>
+               <p className="text-gray-300 text-base mb-2 italic ">"The way to get started is to quit talking and begin doing."</p>
                <p className="text-sm text-gray-400 italic">-Walt Disney</p>
                 <div className="flex gap-2 mt-3">
                  <div className=" px-3 py-1 bg-blue-500  text-sm text-white rounded-full">Random quotes</div> 
