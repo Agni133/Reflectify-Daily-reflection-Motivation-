@@ -46,7 +46,7 @@ export const useQuotes = () => {
 
   const saveQuote = async (quote: Quote) => {
     try {
-      await axios.post("/api/quotes/saved-quotes", {  // ← CHANGED THIS
+      await axios.post("/api/quotes/saved-quotes", {  
         anime: quote.anime,
         character: quote.character,
         quote: quote.quote
