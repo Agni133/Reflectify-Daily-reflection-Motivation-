@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.put("/upload", upload.single("profilePic") ,updateProfilePic)
 router.put("/profile/avatar",authenticateToken,updateAvatar);
-router.put("/proile/theme",authenticateToken,updateTheme);
+router.put("/profile/theme",authenticateToken,updateTheme);
 router.put("/profile/font",authenticateToken,updateFont);
 router.get("/avatar",getAvatar);
 export default router;

@@ -22,6 +22,8 @@ model User {
   journals    Journal[]
   quotes      Quotes[]
   avatarId     String?
+  avatarUrl    String?
+  avatarName   String?
   theme         String  @default("dark")
   fontStyle     String  @default("inter")
    createdAt DateTime @default(now())

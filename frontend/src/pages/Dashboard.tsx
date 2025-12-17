@@ -92,8 +92,9 @@ export default function Dashboard() {
 
         {/* Journal List */}
         <JournalList 
-          journals={journals} 
-          ondelete={deleteJournal} 
+          journals={journals}
+         
+          onDelete={deleteJournal} 
         />
       </main>
     </motion.div>

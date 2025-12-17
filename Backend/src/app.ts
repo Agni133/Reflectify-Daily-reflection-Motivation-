@@ -23,6 +23,8 @@ app.use('/api/journals',journalRoutes);
 app.use('/api/quotes',quotesRoutes);
 
 app.use('/api/profile',profileRoutes);
+
+app.use('/api//profile/anime',profileRoutes);
   
 app.get("/",(_req,res)=>{
     res.send("Running reflectify me");
