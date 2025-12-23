@@ -36,9 +36,9 @@ interface PaginationInfo {
 export default function ProfilePage() {
   const [file, setFile] = useState<File | null>(null)
   const [preview, setPreview] = useState<string | null>(null)
-  const [loading, setLoading] = useState<boolean>(false)
+ 
   const [uploading, setUploading] = useState<boolean>(false)
-  
+
   // Avatar search state
   const [avatarResults, setAvatarResults] = useState<AvatarResult[]>([])
   const [searchQuery, setSearchQuery] = useState<string>("")
@@ -102,7 +102,7 @@ export default function ProfilePage() {
       setAvatarResults(response.data.results)
       setPagination(response.data.pagination)
       setCurrentPage(page)
-    } catch (err: any) {
+    } catch (err:any) {
       console.error("Error searching avatars:", err)
       const errorMsg = err.response?.data?.msg || "Failed to search avatars"
       toast({ title: errorMsg, variant: "destructive" })
@@ -263,8 +263,8 @@ export default function ProfilePage() {
             {activeTab === 'avatar' && (
               <div className="space-y-6">
                 <div className="text-center">
-                  <h3 className="text-lg font-semibold text-white mb-1">Choose Your Avatar</h3>
-                  <p className="text-sm text-slate-400">Search for your favorite anime character</p>
+                  <h3 className="text-lg font-semibold italic text-white mb-1">Choose Your Avatar</h3>
+                  <p className="text-sm text-slate-400 italic ">Search for your favorite anime character</p>
                 </div>
 
                 {/* Search Controls */}
@@ -276,7 +276,7 @@ export default function ProfilePage() {
                       value={searchQuery}
                       onChange={(e) => setSearchQuery(e.target.value)}
                       onKeyDown={(e) => e.key === 'Enter' && searchAvatars()}
-                      className="pl-10 bg-slate-800/50 border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500"
+                      className="pl-10 bg-slate-800/50 italic  border-slate-700 text-white placeholder:text-slate-500 focus:border-blue-500"
                     />
                   </div>
                   
@@ -393,7 +393,7 @@ export default function ProfilePage() {
 
                 {/* Empty State */}
                 {avatarResults.length === 0 && !searching && (
-                  <div className="text-center py-12 text-slate-500">
+                  <div className="text-center  italic py-12 text-slate-500">
                     <User className="w-12 h-12 mx-auto mb-3 opacity-50" />
                     <p>Search for your favorite anime character to use as your avatar</p>
                   </div>
@@ -405,7 +405,7 @@ export default function ProfilePage() {
             {activeTab === 'upload' && (
               <div className="space-y-6">
                 <div className="text-center">
-                  <h3 className="text-lg font-semibold text-white mb-1">Upload Custom Picture</h3>
+                  <h3 className="text-lg font-semibold italic text-white mb-1">Upload Custom Picture</h3>
                   <p className="text-sm text-slate-400">Use your own photo as profile picture</p>
                 </div>
 
@@ -467,7 +467,7 @@ export default function ProfilePage() {
             {activeTab === 'theme' && (
               <div className="space-y-6">
                 <div className="text-center">
-                  <h3 className="text-lg font-semibold text-white mb-1">Choose Your Theme</h3>
+                  <h3 className="text-lg font-semibold italic  text-white mb-1">Choose Your Theme</h3>
                   <p className="text-sm text-slate-400">Personalize the look and feel</p>
                 </div>
 
