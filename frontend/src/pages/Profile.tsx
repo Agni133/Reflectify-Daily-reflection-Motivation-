@@ -19,6 +19,7 @@ import {
 } from "lucide-react"
 import { useToast } from "@/hooks/use-toast"
 import api from "@/lib/axios"
+import { Link } from "react-router-dom"
 
 interface AvatarResult {
   id: number
@@ -203,12 +204,27 @@ export default function ProfilePage() {
   }
 
   return (
+    
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 p-4 md:p-8">
+   {/* nav bar that point towards the dashboard */}
+       <header className="w-full  px-8 py-4 border-b border-slate-800 bg-slate-900/70 backdrop-blur-md">
+         <div className="flex items-center  space-x-9 justify-between  max-w-11xl mx-auto">
+          <div className="italic text-center font-bold text-3xl text-white justify-center items-center">
+            Reflectify Me 
+          </div>
+          <nav className="space-y-20  italic font-bold text-slate-300 ">
+           <Link to = "/dashboard">Dashboard</Link>
+          </nav>
+          </div>
+        </header> <br /> <br />
+   
+   
       {/* Decorative background elements */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl" />
         <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
       </div>
+
 
       <div className="relative max-w-4xl mx-auto">
         {/* Header */}
@@ -217,9 +233,9 @@ export default function ProfilePage() {
             <Sparkles className="w-4 h-4 text-blue-400" />
             <span className="text-sm text-slate-300">Customize Your Experience</span>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
+          <h1 className="text-3xl md:text-2xl font-bold bg-gradient-to-r from-white via-blue-200 to-purple-200 bg-clip-text text-transparent">
             Profile Settings
-          </h1>
+          </h1> 
           <p className="text-slate-400 mt-2">Make Reflectify truly yours</p>
         </div>
 
