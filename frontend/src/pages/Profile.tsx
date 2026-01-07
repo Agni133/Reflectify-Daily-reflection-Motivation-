@@ -118,13 +118,12 @@ export default function ProfilePage() {
       toast({ title: "Please select an avatar first", variant: "destructive" })
       return
     }
-
     setUploading(true)
     try {
       await api.put("/api/profile/profile/avatar", {
         avatarId: selectedAvatar.id.toString(),
         avatarUrl: selectedAvatar.image,
-        avatarName: selectedAvatar.name
+        avatarName: selectedAvatar.name,
       })
       
       setPreview(selectedAvatar.image)
@@ -207,16 +206,21 @@ export default function ProfilePage() {
     
     <div className="min-h-screen bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 p-4 md:p-8">
    {/* nav bar that point towards the dashboard */}
-       <header className="w-full  px-8 py-4 border-b border-slate-800 bg-slate-900/70 backdrop-blur-md">
-         <div className="flex items-center  space-x-9 justify-between  max-w-11xl mx-auto">
-          <div className="italic text-center font-bold text-3xl text-white justify-center items-center">
+       <header className="w-full  px-2 py-1 border-b border-slate-800 bg-slate-900/70 backdrop-blur-md">
+         <div className="flex items-center px-2 space-x-9 justify-between  max-w-11xl mx-auto">
+          <div className="italic text-center font-bold text-3xl text-white justify-between items-center">
             Reflectify Me 
           </div>
-          <nav className="space-y-20  italic font-bold text-slate-300 ">
+          <nav className="flex flex-row space-x-9 items-center justify-between italic font-bold text-slate-300">
            <Link to = "/dashboard">Dashboard</Link>
+      
+           {/* avatar user profile  */} 
+               <img src ={ preview || selectedAvatar?.image||"/default-avatar.png"} alt="profile pic"
+               className="w-9 h-9 rounded-full object-cover ring-2 ring-transparent hover:ring-green-500 transition"
+              />
           </nav>
           </div>
-        </header> <br /> <br />
+        </header> <br/>
    
    
       {/* Decorative background elements */}
