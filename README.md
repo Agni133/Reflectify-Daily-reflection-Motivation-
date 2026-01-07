@@ -52,7 +52,7 @@ Example Flow:
 - AI-generated affirmations
 - OAuth Integration (Third party Signin)
 - Mental pattern analytics AI Based 
-- Dark mode and customizable themes
+  
 
 ---
 
