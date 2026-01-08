@@ -247,7 +247,7 @@ export default function ProfilePage() {
         <div className="flex justify-center mb-8">
           <div className="relative group">
             <div className="absolute -inset-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300" />
-            <Avatar className="relative w-32 h-32 ring-4 ring-slate-800">
+            <Avatar className="relative w-24 h-24 ring-4 ring-slate-800">
               <AvatarImage src={preview || selectedAvatar?.image || "/default-avatar.png"} alt="Profile" />
               <AvatarFallback className="bg-slate-800 text-2xl">YOU</AvatarFallback>
             </Avatar>
@@ -575,7 +575,7 @@ export default function ProfilePage() {
 
         {/* Footer Info */}
         <p className="text-center text-slate-500 text-sm mt-6">
-          Changes are saved automatically ✨
+          Changes are saved automatically
         </p>
       </div>
     </div>
