@@ -9,6 +9,7 @@ return (
      <nav className="font-medium italic text-slate-300 space-x-8">
      <Link to= "/" className="hover:text-blue-400">Home</Link>
       <Link to= "/profile">Profile</Link> 
+
      </nav>
    </div>
   </header>
