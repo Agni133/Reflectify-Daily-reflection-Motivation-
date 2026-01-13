@@ -25,6 +25,11 @@ export  default function Login() {
 
     try {
       const res = await axios.post("/api/auth/signin", form);
+       const token = res.data?.token;
+      if(!token){
+        throw new Error("token is missing")
+
+      }
       localStorage.setItem("token", res.data.token);
       navigate("/dashboard");
     } catch (err: any) {
@@ -67,7 +72,9 @@ export  default function Login() {
               {showPassword ? <EyeOff size={22}/>:<Eye size={22}/>}
              </span>
             </div>
-              {error && <p className="text-sm text-red-400">{error}</p>}
+              {typeof error === "string" && (
+               <p className="text-sm text-red-400">{error}</p>
+                       )}
             <Button  type ="submit" className="w-full bg-blue-800 hover:bg-indigo-700 mt-3" disabled ={loading}>
                {loading?"Signing in...":"Sign in"}
             </Button>
