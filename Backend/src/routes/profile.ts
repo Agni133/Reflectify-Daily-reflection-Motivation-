@@ -9,6 +9,9 @@ router.put("/upload", upload.single("profilePic") ,updateProfilePic)
 router.put("/profile/avatar",authenticateToken,updateAvatar);
 router.put("/profile/theme",authenticateToken,updateTheme);
 router.put("/profile/font",authenticateToken,updateFont);
-router.get("/avatar",getAvatar);
+router.get("/avatar",authenticateToken,getAvatar);
+
+
 export default router;
+
 
