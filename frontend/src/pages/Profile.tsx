@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -111,6 +111,20 @@ export default function ProfilePage() {
       setSearching(false)
     }
   }
+   
+    // on refreshing the profile fetch and retain the avatar 
+    useEffect(() => {
+      const fetchAvatar = async () => {
+        try {
+          const res = await api.get("/api/profile/profile/avatar"); 
+          setPreview(res.data.avatarUrl);
+        } catch (err) {
+          console.error("Error fetching avatar:", err);
+        }
+      }
+      fetchAvatar(); 
+    }, [])
+
 
   // Save selected avatar to profile
   const saveAvatar = async () => {
