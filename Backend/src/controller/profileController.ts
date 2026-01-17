@@ -48,6 +48,33 @@ export const updateAvatar = async (req: Request, res: Response) => {
   }
 };
 
+ export const getProfileAvatar = async(req:Request ,res:Response)=>{
+    
+  try{
+     const user = await  prisma.user.findUnique({
+      where:{
+        id: req.userId
+      },
+      select:{
+        avatarId:true,
+        avatarUrl:true,
+        avatarName:true,
+      }
+     });
+
+     if(!user){
+      res.status(404).json({msg:"user not found"});
+     }
+
+    res.status(200).json(user);
+    return
+    
+  }catch(err){
+    res.status(500).json({msg:"Server error", error:err})
+    return;
+  }
+ }
+
 export const updateTheme = async (req: Request, res: Response) => {
   try {
     const { theme } = req.body;
