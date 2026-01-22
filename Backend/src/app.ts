@@ -8,6 +8,7 @@ import profileRoutes from "./routes/profile"
 import { getAvatar } from "./controller/profileController";
 import path, { join } from "path";
 import { dir } from "console";
+import protectedRoutes from "./routes/protected";
 
 dotenv.config();
 const app = express();
@@ -24,7 +25,9 @@ app.use('/api/quotes',quotesRoutes);
 
 app.use('/api/profile',profileRoutes);
 
-app.use('/api//profile/anime',profileRoutes);
+app.use('/api/profile/anime',profileRoutes);
+
+app.use('/api/protected',protectedRoutes);
   
 app.get("/",(_req,res)=>{
     res.send("Running reflectify me");
