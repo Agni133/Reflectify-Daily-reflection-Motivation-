@@ -230,7 +230,7 @@ export default function ProfilePage() {
       
            {/* avatar user profile  */} 
                <img src ={ preview || selectedAvatar?.image||"/default-avatar.png"} alt="profile pic"
-               className="w-9 h-9 rounded-full object-cover ring-2 ring-transparent hover:ring-green-500 transition"
+               className="w-9 h-9 rounded-full object-cover ring-2 ring-transparent hover:ring-green-500 transition" 
               />
           </nav>
           </div>
