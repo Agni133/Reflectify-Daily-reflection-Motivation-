@@ -7,7 +7,12 @@ declare global {
       userId?: number;
       file?: Express.Multer.File;
       files?: Express.Multer.File[];
+      user?:{
+        userId: string,
+        email :string
+        };
     }
+   
   }
 }
  
