@@ -71,7 +71,7 @@ export const updateAvatar = async (req: Request, res: Response) => {
     
   }catch(err){
     res.status(500).json({msg:"Server error", error:err})
-    return;
+    
   }
  }
 
