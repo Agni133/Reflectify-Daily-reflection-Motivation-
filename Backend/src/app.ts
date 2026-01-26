@@ -6,40 +6,23 @@ import dotenv from 'dotenv'
 import cors from "cors"
 import profileRoutes from "./routes/profile"
 import { getAvatar } from "./controller/profileController";
-import path, { join } from "path";
-import { dir } from "console";
+import path from "path";
 import protectedRoutes from "./routes/protected";
 
 dotenv.config();
 const app = express();  
 
-// IMPORTANT: CORS MUST BE FIRST - BEFORE ANY OTHER MIDDLEWARE
-const allowedOrigins = [
-  'https://reflectify-daily-reflection-motivat-seven.vercel.app',
-  'http://localhost:5173', // for local development
-  'http://localhost:3000'
-];
-
+// CORS - Keep it simple
 app.use(cors({
-  origin: function (origin, callback) {
-    // Allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
-    if (allowedOrigins.indexOf(origin) !== -1) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
+  origin: [
+    'https://reflectify-daily-reflection-motivat-seven.vercel.app',
+    'http://localhost:5173',
+    'http://localhost:3000'
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization'],
-  exposedHeaders: ['Content-Range', 'X-Content-Range'],
-  maxAge: 600 // Cache preflight for 10 minutes
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
-// Handle preflight requests
-app.options('*', cors());
   
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
