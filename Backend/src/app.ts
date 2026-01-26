@@ -11,16 +11,16 @@ import { dir } from "console";
 import protectedRoutes from "./routes/protected";
 
 dotenv.config();
-const app = express();
-app.use(
-    cors({
-      origin: "https://reflectify-daily-reflection-motivat.vercel.app",
-      credentials: true,
-    })
-  );
+const app = express();  
+app.use(cors({
+  origin: 'https://reflectify-daily-reflection-motivat-seven.vercel.app', 
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
+}));
   
 app.use(express.json());
-
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public")));
 
 app.use('/api/auth',authRoutes);
