@@ -19,7 +19,9 @@ app.use(cors({
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  exposedHeaders: ['Content-Length', 'X-Request-Id'],
+  maxAge: 600,
 }));
   
 app.use(express.json());
@@ -36,5 +38,11 @@ app.use('/api/protected',protectedRoutes);
 app.get("/",(_req,res)=>{
     res.send("Running reflectify me");
 });
+
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  console.error(err.stack);
+  res.status(500).json({ error: 'Something went wrong!' });
+});
+
 
 export default app;
