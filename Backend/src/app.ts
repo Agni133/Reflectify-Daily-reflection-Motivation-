@@ -12,7 +12,6 @@ import protectedRoutes from "./routes/protected";
 dotenv.config();
 const app = express();  
 
-// CORS - Keep it simple
 app.use(cors({
   origin: [
     'https://reflectify-daily-reflection-motivat-seven.vercel.app',
@@ -26,7 +25,7 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public")));
-app.options('/.*/', cors());
+
 app.use('/api/auth',authRoutes);
 app.use('/api/journals',journalRoutes);
 app.use('/api/quotes',quotesRoutes);
