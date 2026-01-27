@@ -17,7 +17,6 @@ app.use(cors({
   origin: [
     'https://reflectify-daily-reflection-motivat-seven.vercel.app',
     'http://localhost:5173',
-    'http://localhost:3000'
   ],
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH', 'OPTIONS'],
@@ -27,7 +26,7 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "../public")));
-app.options('*', cors());
+app.options('/.*/', cors());
 app.use('/api/auth',authRoutes);
 app.use('/api/journals',journalRoutes);
 app.use('/api/quotes',quotesRoutes);
