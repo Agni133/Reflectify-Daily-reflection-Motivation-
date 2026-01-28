@@ -11,16 +11,19 @@ const JWT_SECRET = process.env.JWT_SECRET || "your_jwt_secret";
 // ---------------- Signup ------------------
 
 export const signup = async (req: Request, res: Response): Promise<void> => {
-  const parsed = registerSchema.safeParse(req.body);
-
-  if (!parsed.success) {
-    res.status(400).json({ message: "Invalid input", error: parsed.error.errors[0].message });
-    return;
-  }
-
-  const { name, email, password } = parsed.data;
-
   try {
+    const parsed = registerSchema.safeParse(req.body);
+
+    if (!parsed.success) {
+      res.status(400).json({ 
+        message: "Invalid input", 
+        error: parsed.error.errors[0].message 
+      });
+      return;
+    }
+
+    const { name, email, password } = parsed.data;
+
     const existingUser = await prisma.user.findUnique({ where: { email } });
 
     if (existingUser) {
@@ -40,24 +43,33 @@ export const signup = async (req: Request, res: Response): Promise<void> => {
       token,
       user: { id: user.id, name: user.name, email: user.email },
     });
-  } catch (err) {
-    res.status(500).json({ message: "Something went wrong", error: err });
+  } catch (err: any) {
+    console.error(" Signup error:", err);
+    res.status(500).json({ 
+      message: "Something went wrong", 
+      error: err.message 
+    });
   }
 };
 
 // ---------------- Login ------------------
 
 export const login = async (req: Request, res: Response): Promise<void> => {
-  const parsed = loginSchema.safeParse(req.body);
-
-  if (!parsed.success) {
-    res.status(400).json({ message: "Invalid input", error: parsed.error.errors[0].message });
-    return;
-  }
-
-  const { email, password } = parsed.data;
-
   try {
+    console.log("📥 Login attempt:", req.body.email); // Debug log
+    
+    const parsed = loginSchema.safeParse(req.body);
+
+    if (!parsed.success) {
+      res.status(400).json({ 
+        message: "Invalid input", 
+        error: parsed.error.errors[0].message 
+      });
+      return;
+    }
+
+    const { email, password } = parsed.data;
+
     const user = await prisma.user.findUnique({ where: { email } });
 
     if (!user) {
@@ -71,22 +83,25 @@ export const login = async (req: Request, res: Response): Promise<void> => {
       res.status(400).json({ message: "Invalid credentials" });
       return;
     }
-      // storing token inside the localStorage 
+
     const token = jwt.sign({ userId: user.id }, JWT_SECRET, { expiresIn: "7d" });
-       
-      res.status(200).json({
-        token,
-        user:{
-         id:user.id,
-        name:user.name,
-        email:user.email
-        },
-      })
-      
-       res.json({ msg: "Login successful" });
-       return;
-      
-  } catch (err) {
-    res.status(500).json({ message: "Something went wrong", error: err });
+    
+  
+    res.status(200).json({
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email
+      },
+      message: "Login successful"
+    });
+    
+  } catch (err: any) {
+    console.error(" Login error:", err);
+    res.status(500).json({ 
+      message: "Something went wrong", 
+      error: err.message 
+    });
   }
 };
