@@ -59,28 +59,10 @@ export default function ProfilePage() {
   
   const { toast } = useToast()
 
-  const themes = [
-    { id: 'dark', name: 'Midnight', colors: ['#0f172a', '#1e293b', '#334155'], emoji: '🌙' },
-    { id: 'purple', name: 'Purple Dream', colors: ['#4c1d95', '#6d28d9', '#8b5cf6'], emoji: '💜' },
-    { id: 'ocean', name: 'Ocean Blue', colors: ['#0c4a6e', '#0369a1', '#0ea5e9'], emoji: '🌊' },
-    { id: 'sunset', name: 'Sunset', colors: ['#991b1b', '#dc2626', '#f97316'], emoji: '🌅' },
-    { id: 'forest', name: 'Forest', colors: ['#14532d', '#16a34a', '#4ade80'], emoji: '🌲' },
-    { id: 'sakura', name: 'Sakura', colors: ['#831843', '#db2777', '#f9a8d4'], emoji: '🌸' },
-  ]
-
-  const fonts = [
-    { id: 'inter', name: 'Inter', sample: 'The quick brown fox', style: 'font-sans' },
-    { id: 'poppins', name: 'Poppins', sample: 'The quick brown fox', style: 'font-sans' },
-    { id: 'roboto', name: 'Roboto', sample: 'The quick brown fox', style: 'font-sans' },
-    { id: 'merriweather', name: 'Merriweather', sample: 'The quick brown fox', style: 'font-serif' },
-    { id: 'playfair', name: 'Playfair Display', sample: 'The quick brown fox', style: 'font-serif' },
-  ]
 
   const tabs = [
     { id: 'avatar', label: 'Avatar', icon: User },
     { id: 'upload', label: 'Upload', icon: Camera },
-    { id: 'theme', label: 'Theme', icon: Palette },
-    { id: 'fonts', label: 'Fonts', icon: Type },
   ]
 
   // Search for anime avatars using Jikan API via backend
@@ -186,44 +168,8 @@ export default function ProfilePage() {
     }
   }
 
-  // Save theme preference
-  const saveTheme = async (themeId: string) => {
-    setSelectedTheme(themeId)
-    setSavingPrefs(true)
-    try {
-      await api.put("/api/profile/profile/theme", { theme: themeId })
-      toast({ title: `Theme updated to ${themes.find(t => t.id === themeId)?.name}! 🎨` })
-    } catch (err) {
-      console.error("Error saving theme:", err)
-      toast({ title: "Failed to save theme", variant: "destructive" })
-    } finally {
-      setSavingPrefs(false)
-    }
-  }
+  
 
-  useEffect(() => {
-    const fetchPrefs = async () => {
-      const res = await api.get("/api/profile/profile")
-      setSelectedTheme(res.data.theme)
-      setSelectedFont(res.data.fontStyle)
-    }
-    fetchPrefs()
-  }, [])
-
-  // Save font preference
-  const saveFont = async (fontId: string) => {
-    setSelectedFont(fontId)
-    setSavingPrefs(true)
-    try {
-      await api.put("/api/profile/profile/font", { fontStyle: fontId })
-      toast({ title: `Font updated to ${fonts.find(f => f.id === fontId)?.name}! ✍️` })
-    } catch (err) {
-      console.error("Error saving font:", err)
-      toast({ title: "Failed to save font", variant: "destructive" })
-    } finally {
-      setSavingPrefs(false)
-    }
-  }
 
   return (
     
@@ -505,94 +451,6 @@ export default function ProfilePage() {
                 </div>
               </div>
             )}
-
-            {/* Theme Tab */}
-            {activeTab === 'theme' && (
-              <div className="space-y-6">
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold italic  text-white mb-1">Choose Your Theme</h3>
-                  <p className="text-sm text-slate-400">Personalize the look and feel</p>
-                </div>
-
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-                  {themes.map((theme) => (
-                    <button
-                      key={theme.id}
-                      onClick={() => saveTheme(theme.id)}
-                      disabled={savingPrefs}
-                      className={`
-                        relative p-4 rounded-2xl border-2 transition-all duration-300 text-left
-                        ${selectedTheme === theme.id 
-                          ? 'border-blue-500 bg-blue-500/10' 
-                          : 'border-slate-700/50 hover:border-slate-600 bg-slate-800/30'}
-                      `}
-                    >
-                      {/* Color preview */}
-                      <div className="flex gap-1 mb-3">
-                        {theme.colors.map((color, i) => (
-                          <div
-                            key={i}
-                            className="w-6 h-6 rounded-full ring-2 ring-slate-900"
-                            style={{ backgroundColor: color }}
-                          />
-                        ))}
-                      </div>
-                      
-                      <div className="flex items-center gap-2">
-                        <span className="text-lg">{theme.emoji}</span>
-                        <span className="text-white font-medium">{theme.name}</span>
-                      </div>
-
-                      {selectedTheme === theme.id && (
-                        <div className="absolute top-2 right-2">
-                          <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center">
-                            <Check className="w-3 h-3 text-white" />
-                          </div>
-                        </div>
-                      )}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
-            {/* Fonts Tab */}
-            {activeTab === 'fonts' && (
-              <div className="space-y-6">
-                <div className="text-center">
-                  <h3 className="text-lg font-semibold text-white mb-1">Choose Your Font</h3>
-                  <p className="text-sm text-slate-400">Select a typeface that feels right</p>
-                </div>
-
-                <div className="grid gap-3">
-                  {fonts.map((font) => (
-                    <button
-                      key={font.id}
-                      onClick={() => saveFont(font.id)}
-                      disabled={savingPrefs}
-                      className={`
-                        flex items-center justify-between p-4 rounded-xl border-2 transition-all duration-300
-                        ${selectedFont === font.id 
-                          ? 'border-blue-500 bg-blue-500/10' 
-                          : 'border-slate-700/50 hover:border-slate-600 bg-slate-800/30'}
-                      `}
-                    >
-                      <div>
-                        <p className={`text-white font-medium ${font.style}`}>{font.name}</p>
-                        <p className={`text-sm text-slate-400 ${font.style}`}>{font.sample}</p>
-                      </div>
-                      
-                      {selectedFont === font.id && (
-                        <div className="w-6 h-6 bg-blue-500 rounded-full flex items-center justify-center">
-                          <Check className="w-4 h-4 text-white" />
-                        </div>
-                      )}
-                    </button>
-                  ))}
-                </div>
-              </div>
-            )}
-
           </CardContent>
         </Card>
 
