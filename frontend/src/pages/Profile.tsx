@@ -118,6 +118,8 @@ export default function ProfilePage() {
         try {
           const res = await api.get("/api/profile/profile/avatar"); 
           setPreview(res.data.avatarUrl);
+          setSelectedTheme(res.data.theme)
+          setSelectedFont(res.data.fontStyle)      
         } catch (err) {
           console.error("Error fetching avatar:", err);
         }
