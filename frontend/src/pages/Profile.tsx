@@ -227,7 +227,7 @@ export default function ProfilePage() {
           <div className="italic text-center font-bold text-3xl text-white justify-between items-center">
             Reflectify Me 
           </div>
-          <nav className="flex flex-row space-x-9 items-center justify-between italic font-bold text-slate-300">
+          <nav className="flex flex-row space-x-9 items-center justify-between  font-bold text-slate-300">
            <Link to = "/dashboard">Dashboard</Link>
       
            {/* avatar user profile  */} 
