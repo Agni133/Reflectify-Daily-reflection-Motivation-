@@ -117,9 +117,7 @@ export default function ProfilePage() {
       const fetchAvatar = async () => {
         try {
           const res = await api.get("/api/profile/profile/avatar"); 
-          setPreview(res.data.avatarUrl);
-          setSelectedTheme(res.data.theme)
-          setSelectedFont(res.data.fontStyle)      
+          setPreview(res.data.avatarUrl);    
         } catch (err) {
           console.error("Error fetching avatar:", err);
         }
@@ -202,6 +200,18 @@ export default function ProfilePage() {
       setSavingPrefs(false)
     }
   }
+
+  useEffect(() => {
+    const fetchupload = async () => {
+      try {
+        const res = await api.get("/api/profile/profile/theme"); 
+        setSelectedTheme(res.data.theme)    
+      } catch (err) {
+        console.error("Error fetching theme:", err);
+      }
+    }
+    fetchupload(); 
+  }, [])
 
   // Save font preference
   const saveFont = async (fontId: string) => {
