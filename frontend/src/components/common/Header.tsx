@@ -34,6 +34,8 @@ export default function Header() {
     fetchAvatar();
   }, []);
 
+  const username = localStorage.getItem("username");
+
   return (  
     <header className="w-full px-8 py-4 border-b border-slate-800 bg-slate-900/70 backdrop-blur-md">
       <div className="flex items-center justify-between max-w-6xl mx-auto">
@@ -50,6 +52,7 @@ export default function Header() {
             <DropdownMenuTrigger asChild>
               <Button className="flex items-center gap-2 outline-none group">
                 <div className="relative">
+                  <h1 className="text-sm italic"> hi,{username}</h1>
                   <img
                     src={avatarUrl || "/default-avatar.png"}
                     alt="profile-pic"
