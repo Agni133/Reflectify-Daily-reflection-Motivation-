@@ -202,15 +202,12 @@ export default function ProfilePage() {
   }
 
   useEffect(() => {
-    const fetchupload = async () => {
-      try {
-        const res = await api.get("/api/profile/profile/theme"); 
-        setSelectedTheme(res.data.theme)    
-      } catch (err) {
-        console.error("Error fetching theme:", err);
-      }
+    const fetchPrefs = async () => {
+      const res = await api.get("/api/profile/profile")
+      setSelectedTheme(res.data.theme)
+      setSelectedFont(res.data.fontStyle)
     }
-    fetchupload(); 
+    fetchPrefs()
   }, [])
 
   // Save font preference
