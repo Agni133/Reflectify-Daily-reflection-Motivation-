@@ -116,69 +116,42 @@ export function CTA() {
           viewport={{ once: true }}
           className="mt-16 pt-12 border-t border-gray-800"
         >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-left max-w-4xl mx-auto mb-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-8 text-left max-w-3xl mx-auto mb-8">
             {/* Product Column */}
             <div>
               <h5 className="text-white font-semibold mb-4">Product</h5>
               <ul className="space-y-2">
-                <li>
-                  <Link to="/features" className="text-gray-400 hover:text-white transition-colors">
-                    Agent Canvas
-                  </Link>
+                <li className="text-gray-400 hover:text-white transition-colors">
+                    Features
                 </li>
-                <li>
-                  <Link to="/insights" className="text-gray-400 hover:text-white transition-colors">
-                    Insights
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/voice" className="text-gray-400 hover:text-white transition-colors">
-                    Voice Experience
-                  </Link>
+                <li className="text-gray-400 hover:text-white transition-colors">
+                    Pricing
                 </li>
               </ul>
             </div>
 
-            {/* Company Column */}
+            {/* Support Column */}
             <div>
-              <h5 className="text-white font-semibold mb-4">Company</h5>
+              <h5 className="text-white font-semibold mb-4">Support</h5>
               <ul className="space-y-2">
-                <li>
-                  <Link to="/careers" className="text-gray-400 hover:text-white transition-colors">
-                    Careers
-                  </Link>
+                <li className="text-gray-400 hover:text-white transition-colors">
+                    Help Center
                 </li>
-                <li>
-                  <Link to="/contact" className="text-gray-400 hover:text-white transition-colors">
-                    Contact
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/trust" className="text-gray-400 hover:text-white transition-colors">
-                    Trust Center
-                  </Link>
+                <li className="text-gray-400 hover:text-white transition-colors">
+                    Contact Us
                 </li>
               </ul>
             </div>
 
-            {/* Resources Column */}
+            {/* Legal Column */}
             <div>
-              <h5 className="text-white font-semibold mb-4">Resources</h5>
+              <h5 className="text-white font-semibold mb-4">Legal</h5>
               <ul className="space-y-2">
-                <li>
-                  <Link to="/news" className="text-gray-400 hover:text-white transition-colors">
-                    News
-                  </Link>
+                <li className="text-gray-400 hover:text-white transition-colors">
+                    Privacy
                 </li>
-                <li>
-                  <Link to="/privacy" className="text-gray-400 hover:text-white transition-colors">
-                    Privacy Policy
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/terms" className="text-gray-400 hover:text-white transition-colors">
-                    Terms Of Service
-                  </Link>
+                <li className="text-gray-400 hover:text-white transition-colors">
+                    Terms
                 </li>
               </ul>
             </div>
@@ -187,7 +160,7 @@ export function CTA() {
           {/* Copyright and Social Links */}
           <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-gray-800">
             <div className="text-gray-400 text-sm mb-4 md:mb-0">
-              © 2025 Erase AI, Inc.
+              © 2025 Your Journal App
             </div>
             <div className="flex gap-4">
               <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors">
