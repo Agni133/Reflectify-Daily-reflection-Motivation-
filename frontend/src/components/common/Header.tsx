@@ -15,6 +15,7 @@ import { User, LogOut,  ChevronDown } from "lucide-react";
 export default function Header() {
   const [avatarUrl, setAvatarUrl] = useState<string>("");
   const [isOpen, setIsOpen] = useState(false);
+  const [username,setUsername]= useState("");
   const navigate = useNavigate();
     
   const handleLogout = () => {
@@ -34,7 +35,13 @@ export default function Header() {
     fetchAvatar();
   }, []);
 
-  const username = localStorage.getItem("username");
+    //storing the username and display it 
+    useEffect(()=>{
+     const storedusername = localStorage.getItem("username");
+       if(storedusername){
+        setUsername(storedusername);
+       }
+    },[]) 
 
   return (  
     <header className="w-full px-8 py-4 border-b border-slate-800 bg-slate-900/70 backdrop-blur-md">
@@ -72,7 +79,7 @@ export default function Header() {
               className="w-56 bg-slate-900 border border-slate-800 rounded-lg shadow-2xl p-2 animate-in fade-in-0 zoom-in-95"
             >
               <DropdownMenuLabel className="px-3 py-2 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                 Hi {username}
+                 Hi {username || "Guest"}
               </DropdownMenuLabel>
 
               <DropdownMenuItem asChild>
