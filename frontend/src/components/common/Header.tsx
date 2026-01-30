@@ -52,7 +52,6 @@ export default function Header() {
             <DropdownMenuTrigger asChild>
               <Button className="flex items-center gap-2 outline-none group">
                 <div className="relative">
-                  <h1 className="text-sm italic"> hi,{username}</h1>
                   <img
                     src={avatarUrl || "/default-avatar.png"}
                     alt="profile-pic"
@@ -73,7 +72,7 @@ export default function Header() {
               className="w-56 bg-slate-900 border border-slate-800 rounded-lg shadow-2xl p-2 animate-in fade-in-0 zoom-in-95"
             >
               <DropdownMenuLabel className="px-3 py-2 text-xs font-semibold text-slate-400 uppercase tracking-wider">
-                My Account
+                 Hi {username}
               </DropdownMenuLabel>
 
               <DropdownMenuItem asChild>
