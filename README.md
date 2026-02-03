@@ -21,13 +21,14 @@ In today’s fast-paced, high-pressure world, students and young professionals o
 - Keep entries private and organized
 
 ### 💬 Quotes System
-- Save your own personal quotes (books, movies, experiences)
+- Save your own personal anime quotes (books, movies, experiences)
 - Mood Tracker  (happy/sad/neutral)
 - Get a random motivational quote from the system
-- Surprise dopamine hit to start your day 
+- Surprise dopamine hit to start your day
 
-### 💬 Graph System
- - Shows the graph and activity of the user mood based of how many times user have been sad and happy or exicted
+
+### 💬 Acitivity System
+ - Shows the activity of the user mood based of how many times user have been sad and happy or exicted
  
 ---
 
@@ -38,7 +39,7 @@ In today’s fast-paced, high-pressure world, students and young professionals o
 - **Anyone** trying to improve mental wellness or consistency in habits
 \
 Example Flow:
-> Wake up → Log in → Get a surprise quote → Reflect in a short journal entry + Mood emojis for tracking the mood user is feeling  → with a graph showing mood based on emoji and count →  Log out feeling lighter
+> Wake up → Log in → Get a surprise random anime quote → Reflect in a short journal entry + Mood emojis for tracking the mood user is feeling  → with a activity showing mood based on emoji and count → Log out feeling lighter
 
 ---
 ## Architecture Overview
